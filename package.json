@@ -1,0 +1,21 @@
+{
+  "name": "bookworm",
+  "version": "1.0.0",
+  "description": "A project for learning how to add authentication to a web application using Express and MongoDB",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node ./app"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jordanmor/bookworm.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "pug": "^2.0.3"
+  }
+}
