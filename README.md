@@ -1,2 +1,2 @@
 # bookworm
-A web application with user authentication added using Express and MongoDB
+A project for learning how to add authentication to a web application using Express and MongoDB
