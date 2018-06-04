@@ -1,0 +1,8 @@
+body {
+	background: #1d2a33 url('/static/images/bg.jpg') no-repeat;
+	background-size: cover; 
+}
+
+.main {
+	color: #fff;
+}
