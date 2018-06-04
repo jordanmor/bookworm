@@ -7,15 +7,19 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
 //serve static files from /public
-app.use(express.static(__dirname + '/public'));
+app.use('/static', express.static(__dirname + '/public'));
 
 //view engine setup
 app.set('view engine', 'pug');
 app.set('views', __dirname + '/views');
 
+//routes
+const routes = require('./routes/index');
+app.use('/', routes);
+
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
-	const err = new Error('Not Found');
+    const err = new Error('Not Found');
     err.status = 404;
     next(err);
 });
