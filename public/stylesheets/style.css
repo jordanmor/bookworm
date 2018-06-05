@@ -57,6 +57,11 @@ body {
 	border-color: #0056b3;
 }
 
+	/*- Sign Up -*/
+.form-control::placeholder {
+	color: rgba(40,40,40,.5);
+}
+
 /*--- Media Queries ---*/
 
 @media (min-width: 768px ) {

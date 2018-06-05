@@ -10,7 +10,11 @@ router.get('/about', (req, res) => {
 });
 
 router.get('/contact', (req, res) => {
-    res.render('contact', {title: 'contact'} );
+    res.render('contact', {title: 'Contact'} );
+});
+
+router.get('/register', (req, res) => {
+    res.render('register', {title: 'Sign Up'} );
 });
 
 module.exports = router;
