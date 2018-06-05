@@ -32,10 +32,11 @@ body {
 }
 
 /*--- Main Content ---*/
-
 .main {
 	color: #fff;
 	padding-top: 58px;
+}
+.main.home {
 	text-align: center;
 }
 
