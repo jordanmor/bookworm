@@ -3,6 +3,12 @@ body {
 	background-size: cover; 
 }
 
+/*--- Global ---*/
+
+.center {
+	text-align: center;
+}
+
 /*--- Navbar ---*/
 
 .navbar.bg-dark {
@@ -34,10 +40,7 @@ body {
 /*--- Main Content ---*/
 .main {
 	color: #fff;
-	padding-top: 58px;
-}
-.main.home {
-	text-align: center;
+	padding-top: 80px;
 }
 
 .main h1 {
@@ -60,6 +63,19 @@ body {
 	/*- Sign Up -*/
 .form-control::placeholder {
 	color: rgba(40,40,40,.5);
+}
+
+	/*- Error -*/
+
+.error {
+	padding-top: 8rem;
+}
+
+.icn-person {
+	font-size: 35px;
+	border: 2px solid #fff;
+	padding: 8px;
+	border-radius: 50%;
 }
 
 /*--- Media Queries ---*/
