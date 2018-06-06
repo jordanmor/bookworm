@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  .main.container
+    .row
+      .col-md-8.offset-md-2
+        h1.profile.display-4
+          img.avatar.d-xs-none(src='static/images/avatar.png', alt='avatar')
+          | #{name}
+        h2.favorite-book Favorite Book
+        | #{favorite}

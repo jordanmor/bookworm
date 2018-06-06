@@ -64,6 +64,17 @@ body {
 .form-control::placeholder {
 	color: rgba(40,40,40,.5);
 }
+	/*- Sign Up -*/
+.profile {
+	display: flex;
+	align-items: center;
+	margin-bottom: 1rem;
+}
+.avatar {
+	width: 35px;
+	border-radius: 50%;
+	margin-right: 12px;
+}
 
 	/*- Error -*/
 
