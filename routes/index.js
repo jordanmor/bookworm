@@ -14,16 +14,16 @@ router.get('/contact', (req, res) => {
     res.render('contact', {title: 'Contact'} );
 });
 
-router.get('/profile', function(req, res, next) {
+router.get('/profile', (req, res, next) => {
     if (! req.session.userId) {
         const err = new Error('You are not authorized to view this page.');
         err.status = 403;
-        return next(err);
+        next(err);
     }
     User.findById(req.session.userId)
-        .exec(function (error, user) {
+        .exec( (error, user) => {
             if (error) {
-                return next(error);
+                next(error);
             } else {
                 res.render('profile', {title: 'Profile', name: user.name, favorite: user.favoriteBook });
             }
@@ -35,23 +35,22 @@ router.get('/login', (req, res) => {
     res.render('login', {title: 'Log In'});
 });
 
-router.post('/login', function(req, res, next) {
+router.post('/login', (req, res, next) => {
     if (req.body.email && req.body.password) {
-        User.authenticate(req.body.email, req.body.password, function(error, user) {
+        User.authenticate(req.body.email, req.body.password, (error, user) => {
             if (error || !user) {
                 const err = new Error('Wrong email or password.');
                 err.status = 401;
-                return next(err);
+                next(err);
             } else {
                 req.session.userId = user._id;
-                return res.redirect('/profile');
+                res.redirect('/profile');
             }
-
         });
     } else {
         const err = new Error('Email and password are required.');
         err.status = 401;
-        return next(err);   
+        next(err);   
     }
 });
 
@@ -60,7 +59,7 @@ router.get('/register', (req, res) => {
     res.render('register', {title: 'Sign Up'} );
 });
 
-router.post('/register', function(req, res, next){
+router.post('/register', (req, res, next) => {
     if(req.body.name &&
        req.body.email &&
        req.body.favoriteBook &&
@@ -71,7 +70,7 @@ router.post('/register', function(req, res, next){
         if(req.body.password !== req.body.confirmPassword) {
             const err = new Error('Passwords do not match');
             err.status = 400;
-            return next(err);
+            next(err);
         }
 
         //create object with form input
@@ -83,19 +82,19 @@ router.post('/register', function(req, res, next){
         };
 
         // use schema's create method to insert document into Mongo
-        User.create(userData, function (error, user) {
+        User.create(userData, (error, user) => {
             if(error) {
-                return next(error);
+                next(error);
             } else {
                 req.session.userId = user._id;                
-                return res.redirect('/profile');
+                res.redirect('/profile');
             }
         });    
 
     } else {
         const error = new Error('All fields required');
         error.status = 400;
-        return next(error);
+        next(error);
     }
 });
 
