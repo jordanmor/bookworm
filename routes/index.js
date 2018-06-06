@@ -14,6 +14,16 @@ router.get('/contact', (req, res) => {
     res.render('contact', {title: 'Contact'} );
 });
 
+// Login
+router.get('/login', (req, res) => {
+    res.render('login', {title: 'Log In'});
+});
+
+router.post('/login', (req, res) => {
+    res.send('Logged In');
+});
+
+// Register
 router.get('/register', (req, res) => {
     res.render('register', {title: 'Sign Up'} );
 });
