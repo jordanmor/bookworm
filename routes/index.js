@@ -19,8 +19,24 @@ router.get('/login', (req, res) => {
     res.render('login', {title: 'Log In'});
 });
 
-router.post('/login', (req, res) => {
-    res.send('Logged In');
+router.post('/login', (req, res, next) => {
+    if (req.body.email && req.body.password) {
+        User.authenticate(req.body.email, req.body.password, (error, user) => {
+            if (error || !user) {
+                const err = new Error('Wrong email or password.');
+                err.status = 401;
+                next(err);
+            } else {
+                req.session.userID = user._id;
+                res.redirect('/profile');
+            }
+
+        });
+    } else {
+     const err = new Error('Email and password are required.');
+     err.status = 401;
+     next(err);   
+    }
 });
 
 // Register
@@ -55,6 +71,7 @@ router.post('/register', (req, res, next) => {
             if(error) {
                 next(err);
             } else {
+                req.session.userID = user._id;                
                 res.redirect('/profile');
             }
         });    
