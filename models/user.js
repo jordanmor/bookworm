@@ -24,21 +24,21 @@ const UserSchema = new Schema({
     }
 });
 // authenticate input against database documents
-UserSchema.statics.authenticate = function(email, password, callback) {
+UserSchema.statics.authenticate = (email, password, callback) => {
     User.findOne({email: email})
-        .exec(function (error, user) {
+        .exec( (error, user) => {
             if(error) {
-                return callback(error);
+                callback(error);
             } else if ( !user ) {
                 const err = new Error('User not found');
                 err.status = 401;
-                return callback(err);
+                callback(err);
             }
-            bcrypt.compare(password, user.password, function(error, result) {
+            bcrypt.compare(password, user.password, (error, result) => {
                 if(result === true) {
-                    return callback(null, user);
+                    callback(null, user);
                 } else {
-                    return callback();
+                    callback();
                 }
             });
         });
@@ -46,12 +46,12 @@ UserSchema.statics.authenticate = function(email, password, callback) {
 // hash password before saving to database
 UserSchema.pre('save', function (next) {
     const user = this;
-    bcrypt.hash(user.password, 10, function(err, hash) {
+    bcrypt.hash(user.password, 10, (err, hash) => {
         if (err) {
             next(err);
         }
         user.password = hash;
-        next();
+        return next();
     });
 });
 const User = mongoose.model('User', UserSchema);
