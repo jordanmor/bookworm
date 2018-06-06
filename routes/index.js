@@ -18,7 +18,7 @@ router.get('/profile', (req, res, next) => {
     if (! req.session.userId) {
         const err = new Error('You are not authorized to view this page.');
         err.status = 403;
-        next(err);
+        return next(err);
     }
     User.findById(req.session.userId)
         .exec( (error, user) => {
@@ -51,6 +51,19 @@ router.post('/login', (req, res, next) => {
         const err = new Error('Email and password are required.');
         err.status = 401;
         next(err);   
+    }
+});
+
+// Logout
+router.get('/logout', (req, res, next) => {
+    if (req.session) {
+        req.session.destroy( err => {
+            if(err) {
+                next(err);
+            } else {
+                res.redirect('/');
+            }
+        });
     }
 });
 

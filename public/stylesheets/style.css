@@ -9,6 +9,12 @@ body {
 	text-align: center;
 }
 
+.avatar {
+	border-radius: 50%;
+	width: 35px;
+	height: 35px;
+}
+
 /*--- Navbar ---*/
 
 .navbar.bg-dark {
@@ -31,10 +37,17 @@ body {
 	height: 40px;
 	float: right;
 }
+.logout-btn {
+	display: flex;
+}
 
 .btn.login {
 	padding: .35rem 1.2rem;
 	align-self: center;
+}
+.logout-btn .avatar {
+	align-self: center;
+	margin-right: 1rem;
 }
 
 /*--- Main Content ---*/
@@ -70,9 +83,7 @@ body {
 	align-items: center;
 	margin-bottom: 1rem;
 }
-.avatar {
-	width: 35px;
-	border-radius: 50%;
+.profile .avatar {
 	margin-right: 12px;
 }
 
